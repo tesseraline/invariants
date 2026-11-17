@@ -140,6 +140,7 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 markers = [
     "slow: long-running test (skip with -m 'not slow')",
+    "benchmark: a speed target measured on a laptop; shared CI runners skip it (-m 'not benchmark')",
     "integration: hits external services",
     "characterization: pins existing behavior",
 ]

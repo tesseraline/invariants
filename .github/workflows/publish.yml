@@ -23,7 +23,7 @@ jobs:
           version="$(uv version --short)"
           test "v${version}" = "${GITHUB_REF_NAME}" || { echo "tag ${GITHUB_REF_NAME} != v${version}"; exit 1; }
       - name: tests
-        run: uv sync --locked --all-extras && uv run pytest -q -p no:invariants
+        run: uv sync --locked --all-extras && uv run pytest -q -p no:invariants -m "not benchmark"  # the speed target is for a laptop, not a shared runner
         env:
           SEMGREP_ENABLE_VERSION_CHECK: "0"
           SEMGREP_SEND_METRICS: "off"

@@ -118,6 +118,7 @@ def test_an_untyped_boundary_stops_the_import_with_a_named_error(passing: Path) 
 
 
 @pytest.mark.slow
+@pytest.mark.benchmark
 def test_two_hundred_promises_with_factory_inputs_in_under_ten_seconds(tmp_path: Path) -> None:
     """`check` on 200 promises with factory inputs finishes in under 10 s on a laptop."""
     import time  # noqa: PLC0415 - only this slow test needs it
