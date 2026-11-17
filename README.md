@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/cover@2x.png" alt="tesseraline invariants: know when a change breaks a business rule" width="100%">
+  <img src="https://raw.githubusercontent.com/tesseraline/invariants/production/assets/cover@2x.png" alt="tesseraline invariants: know when a change breaks a business rule" width="100%">
 </p>
 
 <p align="center">
-  <a href="LICENSE.md"><img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue"></a>
+  <a href="https://github.com/tesseraline/invariants/blob/production/LICENSE.md"><img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue"></a>
   <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12%2B-blue">
   <img alt="Typed" src="https://img.shields.io/badge/typing-py.typed-blue">
 </p>
