@@ -1,0 +1,16 @@
+# tesseraline-invariants/examples/caught/pyproject.toml - a project whose promises break.
+[project]
+name = "caught-example"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.invariants]
+modules = ["caught_example.exports", "caught_example.texts", "caught_example.unchecked"]
+max_examples = 60
+lock_file = "invariants.lock"
+regressions_dir = "invariants/regressions"
+audit_file = "invariants/audit.jsonl"
+
+[tool.invariants.factories]
+"caught_example.models:WriteHandle" = "caught_example.models:example_handles"
+"builtins:str" = "caught_example.models:example_sentences"

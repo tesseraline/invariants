@@ -1,0 +1,63 @@
+# tesseraline-invariants/src/tesseraline_invariants/rules/unguarded-exits.yml
+# Semgrep rules for users: places where a whole object, or a value nobody named, leaves the code.
+# They point, they never decide: a hit means "put a promise here, or build the output from named fields".
+# Run: invariants scan   (or: semgrep --metrics=off --disable-version-check --config "$(invariants rules)" src/)
+# An intended exit is marked where it happens, with the reason, so review sees it:
+#   token = base64.b64encode(f"{user}:{password}".encode())  # nosemgrep: invariants-encoding-is-not-hiding - proxy auth header
+rules:
+  - id: invariants-whole-object-to-json
+    message: >-
+      A whole object is serialised: every field it has or will get leaves with it, a secret added next year
+      included. Build the output from named fields, or put @invariant(never_contains(Secret)) on this function.
+    severity: WARNING
+    languages: [python]
+    pattern-either:
+      - pattern: json.dumps($X.__dict__, ...)
+      - pattern: json.dumps(dataclasses.asdict($X), ...)
+      - pattern: json.dumps(asdict($X), ...)
+      - pattern: json.dumps($X.model_dump(), ...)
+      - pattern: $X.model_dump_json()
+
+  - id: invariants-repr-in-output
+    message: >-
+      repr() of an object goes into output: a repr shows every field, including credentials held by the object.
+      Use the named fields you mean to show.
+    severity: WARNING
+    languages: [python]
+    pattern-either:
+      - pattern: 'json.dumps({..., $K: repr($X), ...}, ...)'
+      - pattern: 'json.dumps([..., repr($X), ...], ...)'
+
+  - id: invariants-whole-object-to-log
+    message: >-
+      A whole object goes into a log line. Log named fields only, so a field added later cannot leak.
+    severity: WARNING
+    languages: [python]
+    patterns:
+      - pattern-either:
+          - pattern: $LOG.$METHOD(..., $X.__dict__, ...)
+          - pattern: $LOG.$METHOD(..., $K=$X.__dict__, ...)
+          - pattern: $LOG.$METHOD(..., $K=dataclasses.asdict($X), ...)
+          - pattern: $LOG.$METHOD(..., $K=asdict($X), ...)
+          - pattern: $LOG.$METHOD(..., $K=$X.model_dump(), ...)
+      - metavariable-regex:
+          metavariable: $METHOD
+          regex: ^(debug|info|warning|warn|error|exception|critical|log|msg)$
+
+  - id: invariants-encoding-is-not-hiding
+    message: >-
+      base64 of a formatted string: encoding hides nothing, a reader decodes it in a second. Check which fields
+      the string holds, or promise never_contains(Secret) here.
+    severity: WARNING
+    languages: [python]
+    pattern-either:
+      - pattern: base64.b64encode(f"...".encode(...))
+      - pattern: base64.urlsafe_b64encode(f"...".encode(...))
+
+  - id: invariants-select-star
+    message: >-
+      SELECT * returns every column, including one added next year (say, a secret). Name the columns and parse
+      the rows into a strict model.
+    severity: WARNING
+    languages: [python]
+    pattern-regex: '(?i)\bselect\s+\*\s+from\b'

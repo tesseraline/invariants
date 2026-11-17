@@ -1,0 +1,6 @@
+{"function": "caught_example.exports:debug_header", "id": "caught_example.exports:debug_header#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}
+{"function": "caught_example.exports:to_query_json", "id": "caught_example.exports:to_query_json#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}
+{"function": "caught_example.texts:shorten", "id": "caught_example.texts:shorten#preserves:2c8c4c21", "kind": "preserves", "params": {"both_ways": "true", "kinds": "numbers"}}
+{"function": "caught_example.texts:summarize", "id": "caught_example.texts:summarize#holds:4f081b91", "kind": "holds", "params": {"predicate": "total adds up", "source": "e2566a282c93"}}
+{"function": "caught_example.unchecked:send_to_warehouse", "id": "caught_example.unchecked:send_to_warehouse#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}
+{"function": "caught_example.unchecked:with_telemetry", "id": "caught_example.unchecked:with_telemetry#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}

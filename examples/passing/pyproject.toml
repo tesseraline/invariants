@@ -1,0 +1,16 @@
+# tesseraline-invariants/examples/passing/pyproject.toml - the same project done right; every promise holds.
+[project]
+name = "passing-example"
+version = "0.0.0"
+requires-python = ">=3.12"
+
+[tool.invariants]
+modules = ["passing_example.exports", "passing_example.texts"]
+max_examples = 60
+lock_file = "invariants.lock"
+regressions_dir = "invariants/regressions"
+audit_file = "invariants/audit.jsonl"
+
+[tool.invariants.factories]
+"passing_example.models:WriteHandle" = "passing_example.models:example_handles"
+"builtins:str" = "passing_example.models:example_sentences"

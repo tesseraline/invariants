@@ -1,0 +1,4 @@
+{"function": "passing_example.exports:debug_header", "id": "passing_example.exports:debug_header#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}
+{"function": "passing_example.exports:to_query_json", "id": "passing_example.exports:to_query_json#never_contains:ddc03c37", "kind": "never_contains", "params": {"markers": "Secret"}}
+{"function": "passing_example.texts:shorten", "id": "passing_example.texts:shorten#preserves:2c8c4c21", "kind": "preserves", "params": {"both_ways": "true", "kinds": "numbers"}}
+{"function": "passing_example.texts:summarize", "id": "passing_example.texts:summarize#holds:4f081b91", "kind": "holds", "params": {"predicate": "total adds up", "source": "e2566a282c93"}}

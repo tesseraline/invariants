@@ -1,0 +1,19 @@
+# tesseraline-invariants/.pre-commit-hooks.yaml - hooks other repositories use, so that code with a broken
+# promise does not reach a server. Both run in the project's own environment ("system"), because the check
+# imports the project's code; install "tesseraline-invariants[check,scan]" there. Both block the commit and
+# the push: a broken, removed or changed promise, an unguarded exit, or a configuration error stops it.
+- id: invariants-check
+  name: promises hold (tesseraline-invariants)
+  entry: invariants check --strict
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-commit, pre-push]
+
+- id: invariants-scan
+  name: no unguarded exits (tesseraline-invariants rules, Semgrep)
+  entry: invariants scan
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-commit, pre-push]
