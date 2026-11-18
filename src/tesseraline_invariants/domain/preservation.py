@@ -64,7 +64,7 @@ def extract(kind: Kind, text: str) -> Counter[str]:
     :returns: a multiset of normalised items.
 
     Examples:
-        >>> sorted(extract(Kind.NUMBERS, "Revenue 1,000 rose 15 percent"))
+        >>> sorted(extract(Kind.NUMBERS, "Attendance 1,000 rose 15 percent"))
         ['1000', '15%']
         >>> sorted(extract(Kind.DATES, "on 17 November 2026 and 2026-11-18"))
         ['2026-11-17', '2026-11-18']
