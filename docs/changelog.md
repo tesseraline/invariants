@@ -5,9 +5,17 @@ versions follow [Semantic Versioning](https://semver.org/). Before 1.0 a minor v
 
 ## [Unreleased]
 
+## [0.0.3] - 2026-11-18
+
 ### Added
 - Documentation site, security policy, this changelog.
 - CI on every push and pull request; OpenSSF Scorecard; Dependabot for GitHub Actions.
+- Each release on GitHub carries the wheel and sdist with a Sigstore signature (`*.sigstore.json`).
+- CI checks the locked dependencies for known vulnerabilities (pip-audit).
+- A release runs only when the tag is `vX.Y.Z`, equals the package version and has its changelog section.
+
+### Changed
+- Semgrep is no longer a dependency (the `scan` extra is gone); install it as its own tool: `uv tool install semgrep`.
 
 ## [0.0.2] - 2026-11-18
 
@@ -30,6 +38,7 @@ versions follow [Semantic Versioning](https://semver.org/). Before 1.0 a minor v
 - Opt-in pytest plugin (`pytest --invariants`) and Semgrep rules for unguarded exits.
 - pre-commit hooks `invariants-check` and `invariants-scan`.
 
-[Unreleased]: https://github.com/tesseraline/invariants/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/tesseraline/invariants/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/tesseraline/invariants/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/tesseraline/invariants/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/tesseraline/invariants/releases/tag/v0.0.1
