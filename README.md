@@ -137,3 +137,10 @@ No permission is given to use this code or its documentation to train or evaluat
 for any purpose; text and data mining for that purpose is reserved (Article 4(3), Directive (EU) 2019/790). See
 `LICENSE.md`.
 
+## Development
+
+```console
+$ git clone https://github.com/tesseraline/invariants && cd invariants
+$ uv sync --all-extras
+$ uv run pytest -q -p no:invariants      # the library's own tests; its pytest plugin stays off here
+```
