@@ -1,14 +1,24 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tesseraline/invariants/production/assets/cover@2x.png" alt="tesseraline invariants: know when a change breaks a business rule" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tesseraline/invariants/production/assets/mark-dark.png">
+    <img src="https://raw.githubusercontent.com/tesseraline/invariants/production/assets/mark-light.png" alt="tesseraline" width="220">
+  </picture>
 </p>
 
 <p align="center">
+  <a href="https://pypi.org/project/tesseraline-invariants/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/tesseraline-invariants"></a>
   <a href="https://github.com/tesseraline/invariants/blob/production/LICENSE.md"><img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue"></a>
   <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12%2B-blue">
   <img alt="Typed" src="https://img.shields.io/badge/typing-py.typed-blue">
 </p>
 
 # tesseraline-invariants
+
+**Know when a change breaks a business rule.**
+
+```console
+$ pip install tesseraline-invariants
+```
 
 A function makes promises about its output: it never returns a credential, it keeps every number of its input, its
 result adds up. Write the promise next to the function; `invariants check` runs the function on many inputs and
