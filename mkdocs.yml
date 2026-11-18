@@ -1,0 +1,35 @@
+site_name: tesseraline-invariants
+site_description: Know when a change breaks a business rule.
+site_url: https://tesseraline.github.io/invariants/
+repo_url: https://github.com/tesseraline/invariants
+repo_name: tesseraline/invariants
+edit_uri: ""
+copyright: Copyright 2026 Tesseraline · PolyForm Noncommercial 1.0.0
+theme:
+  name: material
+  logo: assets/mark.png
+  favicon: assets/mark.png
+  palette:
+    - scheme: slate
+      primary: black
+      accent: blue grey
+      toggle: {icon: material/weather-sunny, name: Light}
+    - scheme: default
+      primary: black
+      accent: blue grey
+      toggle: {icon: material/weather-night, name: Dark}
+  features: [content.code.copy, navigation.sections, navigation.top]
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.highlight
+  - pymdownx.superfences
+nav:
+  - Overview: index.md
+  - Getting started: getting-started.md
+  - Promises: promises.md
+  - Commands: commands.md
+  - Configuration: configuration.md
+  - In CI and hooks: ci.md
+  - Limits: limits.md
+  - Changelog: changelog.md

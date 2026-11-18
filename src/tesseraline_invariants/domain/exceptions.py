@@ -4,7 +4,7 @@
 
 Data lives on attributes; the message is for people. Declaration errors are raised when a function
 is decorated, configuration errors when settings or adapters are
-loaded (0006).
+loaded.
 """
 
 from __future__ import annotations

@@ -48,3 +48,6 @@ coverage.xml
 .dmypy.json
 .pyre/
 .pytype/
+
+# MkDocs build output
+site/

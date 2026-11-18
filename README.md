@@ -20,6 +20,8 @@
 $ pip install tesseraline-invariants
 ```
 
+[Documentation](https://tesseraline.github.io/invariants/) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md)
+
 A function makes promises about its output: it never returns a credential, it keeps every number of its input, its
 result adds up. Write the promise next to the function; `invariants check` runs the function on many inputs and
 says, with a minimal failing input, when a later change breaks it.
@@ -71,7 +73,7 @@ Block a commit and a push while a promise is broken or an exit is unguarded, in 
 
 ```yaml
 - repo: https://github.com/tesseraline/invariants
-  rev: v0.0.1
+  rev: v0.0.2
   hooks:
     - id: invariants-check   # promises hold (strict)
     - id: invariants-scan    # the Semgrep rules for unguarded exits

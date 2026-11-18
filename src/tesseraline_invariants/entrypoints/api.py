@@ -71,7 +71,7 @@ def invariant(
 def never_contains(*markers: object) -> NeverContains:
     """Promise that no secret planted in the input appears in the output.
 
-    :param markers: what counts as secret; `Secret` covers every way a secret is marked (0005).
+    :param markers: what counts as secret; `Secret` covers every way a secret is marked.
     :returns: the invariant.
 
     Examples:
@@ -87,7 +87,7 @@ def preserves(*kinds: str, both_ways: bool = True) -> Preserves:
     """Promise that every number, date, quote or link of the input is still in the output.
 
     :param kinds: any of "numbers", "dates", "quotes", "links".
-    :param both_ways: also forbid items that appear only in the output (default, decision on gap 5).
+    :param both_ways: also forbid items that appear only in the output (the default).
     :returns: the invariant.
     :raises UsageError: for an unknown kind.
 

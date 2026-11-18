@@ -1,4 +1,4 @@
-"""A production install without extras: the decorator works, the check names the extra (0013).
+"""A production install without extras: the decorator works, the check names the extra.
 
 `tesseraline-invariants/tests/integration/test_bare_install.py`
 """
