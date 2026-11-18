@@ -6,10 +6,10 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/tesseraline-invariants/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/tesseraline-invariants"></a>
-  <a href="https://github.com/tesseraline/invariants/blob/production/LICENSE.md"><img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-blue"></a>
-  <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12%2B-blue">
-  <img alt="Typed" src="https://img.shields.io/badge/typing-py.typed-blue">
+  <a href="https://pypi.org/project/tesseraline-invariants/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/tesseraline-invariants?label=PyPI&style=flat-square&labelColor=f2efe9&color=1b1b1b"></a>
+  <a href="https://github.com/tesseraline/invariants/blob/production/LICENSE.md"><img alt="License: PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-1b1b1b?style=flat-square&labelColor=f2efe9&color=1b1b1b"></a>
+  <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12%2B-1b1b1b?style=flat-square&labelColor=f2efe9&color=1b1b1b">
+  <img alt="Typed" src="https://img.shields.io/badge/typing-py.typed-1b1b1b?style=flat-square&labelColor=f2efe9&color=1b1b1b">
 </p>
 
 # tesseraline-invariants
