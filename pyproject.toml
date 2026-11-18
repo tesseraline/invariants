@@ -2,10 +2,15 @@
 
 [project]
 name = "tesseraline-invariants"
-version = "0.0.1"
+version = "0.0.2"
 description = "Promises about what a function's output may contain, checked by code and recorded in a lock file."
 readme = "README.md"
 requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
 license = { text = "PolyForm-Noncommercial-1.0.0" }
 authors = [{ name = "Tesseraline" }]
 # The decorator and Secret need the standard library only, so production images carry no test tooling.
