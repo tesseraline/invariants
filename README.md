@@ -66,7 +66,8 @@ $ semgrep --metrics=off --disable-version-check --config "$(invariants rules)" s
 
 ```console
 $ pip install tesseraline-invariants                 # production: Secret and @invariant, standard library only
-$ pip install "tesseraline-invariants[check,scan]"   # CI and developers: invariants check, pytest plugin, scan
+$ pip install "tesseraline-invariants[check]"        # CI and developers: invariants check, pytest plugin
+$ uv tool install semgrep                             # for invariants scan (kept apart from your project)
 ```
 
 Block a commit and a push while a promise is broken or an exit is unguarded, in `.pre-commit-config.yaml`:

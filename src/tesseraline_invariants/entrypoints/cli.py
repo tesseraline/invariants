@@ -63,7 +63,7 @@ def scan(paths: list[str], project: Path, exclude: list[str] | None = None) -> i
     """
     semgrep: str | None = shutil.which("semgrep") or _beside_python("semgrep")
     if semgrep is None:
-        print("semgrep is not installed: pip install 'tesseraline-invariants[scan]'")
+        print("semgrep is not installed: uv tool install semgrep (or pipx install semgrep)")
         return CONFIG_ERROR
     targets = paths or [str(project / "src") if (project / "src").is_dir() else str(project)]
     command = [

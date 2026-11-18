@@ -19,11 +19,12 @@ dependencies = []
 
 [project.optional-dependencies]
 check = [
-    "structlog>=24.1.0",   # developer log (decision 8e)
-    "hypothesis>=6.110.0", # inputs built from types (decision 8a, gap 1)
-    "pydantic>=2.7.0",     # settings at the boundary; SecretStr recognised (decision 8c)
+    "structlog>=24.1.0",   # developer log
+    "hypothesis>=6.110.0", # inputs built from types
+    "pydantic>=2.7.0",     # settings at the boundary; SecretStr recognised
 ]
-scan = ["semgrep>=1.85.0"]   # `invariants scan`: the rules for unguarded exits
+# `invariants scan` runs Semgrep, installed as its own tool (uv tool install semgrep): Semgrep pins its
+# dependencies to versions with known advisories, so it stays out of this package and its lock.
 
 [project.scripts]
 invariants = "tesseraline_invariants.entrypoints.cli:main"
@@ -50,8 +51,8 @@ dev = [
     # --- Profiling ---
     "pyinstrument>=4.7.0",
 
-    # --- The user-facing Semgrep rules, tested end to end ---
-    "semgrep>=1.85.0",
+    # --- The user-facing Semgrep rules are tested with Semgrep installed as a tool (uv tool install semgrep) ---
+    "attrs>=24.2.0",              # tests: secret fields on attrs classes
 ]
 
 # ------------------------------------------------------------------
