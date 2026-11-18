@@ -123,6 +123,7 @@ convention = "google"
 "examples/**/*.py"            = ["TC", "D", "ANN", "S311"]   # sample code; annotations read at run time
 
 [tool.ruff.format]
+exclude = ["docs/*.md"]   # one-line examples must stay one line (a nosemgrep comment covers only its own line)
 quote-style = "double"
 indent-style = "space"
 docstring-code-format = true
