@@ -5,6 +5,13 @@ versions follow [Semantic Versioning](https://semver.org/). Before 1.0 a minor v
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-11-18
+
+### Added
+- A parameter whose own annotation is a secret (`key: Secret[str]`, also `Secret[str] | None`) is checked
+  like a secret field: `never_contains` plants a canary in it. Before, such a function was reported as not checked.
+  Name patterns from `secret_fields` apply to parameter names too.
+
 ## [0.0.3] - 2026-11-18
 
 ### Added
@@ -38,7 +45,8 @@ versions follow [Semantic Versioning](https://semver.org/). Before 1.0 a minor v
 - Opt-in pytest plugin (`pytest --invariants`) and Semgrep rules for unguarded exits.
 - pre-commit hooks `invariants-check` and `invariants-scan`.
 
-[Unreleased]: https://github.com/tesseraline/invariants/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/tesseraline/invariants/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/tesseraline/invariants/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/tesseraline/invariants/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/tesseraline/invariants/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/tesseraline/invariants/releases/tag/v0.0.1

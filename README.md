@@ -74,7 +74,7 @@ Block a commit and a push while a promise is broken or an exit is unguarded, in 
 
 ```yaml
 - repo: https://github.com/tesseraline/invariants
-  rev: v0.0.3
+  rev: v0.0.4
   hooks:
     - id: invariants-check   # promises hold (strict)
     - id: invariants-scan    # the Semgrep rules for unguarded exits

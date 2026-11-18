@@ -2,7 +2,8 @@
 
 `tesseraline-invariants/src/tesseraline_invariants/application/secret_fields.py`
 
-Rules, strongest first: our `Secret` mark, Pydantic `SecretStr`
+A parameter whose own annotation is a secret (`key: Secret[str]`) counts as one, under the
+parameter's name. Rules, strongest first: our `Secret` mark, Pydantic `SecretStr`
 and `SecretBytes`, the user's own secret types, field metadata `{"secret": True}` (dataclasses,
 attrs), a user `SecretRule` hook, and field-name patterns (opt-in, heuristic). A field marked
 several ways is reported once, with the strongest kind. The walk follows dataclasses, Pydantic
@@ -84,10 +85,27 @@ def find_secret_fields(root: object, rules: SecretRules, prefix: str = "") -> li
     """
     best: dict[tuple[str, ...], SecretField] = {}
     start = (prefix,) if prefix else ()
-    for found in _walk(root, start, rules, set()):
+    for found in (*_root(root, start, rules), *_walk(root, start, rules, set())):
         if found.path not in best or found.strength > best[found.path].strength:
             best[found.path] = found
     return [best[k] for k in sorted(best)]
+
+
+def _root(root: object, path: tuple[str, ...], rules: SecretRules) -> tuple[SecretField, ...]:
+    """The annotation itself, when it names a parameter: `key: Secret[str]` counts like a field.
+
+    Hooks are not asked here: they take the class that owns a field, and a parameter has none.
+
+    Examples:
+        >>> from tesseraline_invariants.domain.secret import Secret
+        >>> [f.dotted for f in find_secret_fields(Secret[str] | None, SecretRules(), "key")]
+        ['key']
+    """
+    if not path:
+        return ()
+    without_hooks = SecretRules(rules.types, rules.name_patterns, ())
+    rule = _rule_for(type(None), path[-1], root, {}, without_hooks)
+    return (SecretField(path, "parameter", *rule),) if rule else ()
 
 
 def _walk(

@@ -140,3 +140,14 @@ def test_unresolvable_hints_fail_loudly_instead_of_hiding_a_secret() -> None:
 
     with pytest.raises(DeclarationError):
         find_secret_fields(Local, NO_RULES, "x")
+
+
+def test_a_parameter_annotation_itself_can_be_the_secret() -> None:
+    assert [f.dotted for f in find_secret_fields(Secret[str], SecretRules(), "key")] == ["key"]
+    optional = find_secret_fields(Secret[str] | None, SecretRules(), "key")
+    assert [f.dotted for f in optional] == ["key"]
+    assert find_secret_fields(str, SecretRules(), "key") == []
+    named = SecretRules(name_patterns=("*token*",))
+    assert [f.rule for f in find_secret_fields(str, named, "api_token")] == ["secret by name"]
+    # a return value has no parameter name
+    assert find_secret_fields(Secret[str], SecretRules(), "") == []

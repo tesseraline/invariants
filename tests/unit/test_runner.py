@@ -288,3 +288,14 @@ def test_a_secret_held_by_a_fake_inside_a_fake_is_found(tmp_path: Path) -> None:
         Ledger  # a local Protocol: give the annotation directly
     )
     assert "found in what FakeLedger received" in check_promise(item, run).reason
+
+
+def test_a_secret_parameter_is_planted_like_a_secret_field(run: RunnerSettings) -> None:
+    def echoes(level: str, key: Secret[str] | None = None) -> str:
+        return f"{level}: {key}"
+
+    def ignores(level: str, key: Secret[str] | None = None) -> str:
+        return level
+
+    assert check(echoes, never_contains(Secret), run).outcome is Outcome.BROKEN
+    assert check(ignores, never_contains(Secret), run).outcome is Outcome.PASSED

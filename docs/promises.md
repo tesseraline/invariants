@@ -9,6 +9,9 @@ A field counts as secret when it is marked in any of these ways:
 - your own types, listed in `secret_types` (`"module:Class"`);
 - field names matching `secret_fields` patterns (a heuristic, opt-in).
 
+A parameter counts the same way when its own annotation is marked, for example
+`def entry(level: str, key: Secret[str] | None = None)`. The check then plants the canary in that parameter.
+
 ## `never_contains(Secret)`
 
 No secret planted in the input appears in the output. The check fills every secret field with a canary value and
