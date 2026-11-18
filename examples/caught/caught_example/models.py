@@ -46,7 +46,7 @@ def example_sentences() -> list[str]:
     promise needs realistic text from a factory to mean anything.
     """
     return [
-        "Revenue rose 15% to 1,200 million in the third quarter.",
-        "Margins fell 2.5 percent on 17 November 2026.",
-        "Prices held at 40 dollars per barrel.",
+        "Attendance rose 15% to 1,200 people this season.",
+        "Rainfall dropped 2.5 percent on 3 May 2024.",
+        "Tickets stayed at 40 dollars each.",
     ]
